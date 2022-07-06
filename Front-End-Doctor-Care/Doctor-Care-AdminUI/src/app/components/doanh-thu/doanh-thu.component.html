@@ -1,0 +1,120 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Xem doanh thu</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a [routerLink]="['/doanhthu']" routerLinkActive="router-link-active" onClick="return false;">Doanh
+                thu</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <div class="table-responsive">
+              <div class="materialTableHeader">
+                <div class="row">
+                  <div class="col-8">
+                    <ul class="header-buttons-left ms-0">
+                      <li class="dropdown">
+                        <h2>
+                          <strong>Xem doanh thu</strong></h2>
+                      </li>
+                      <li>
+                        <div class="icon-button-demo m-l-10">
+                          <mat-form-field appearance="fill" style="width: 100%;" class="browser-default search-field">
+                            <mat-label>Start</mat-label>
+                            <input matInput [matDatepicker]="picker" (dateChange)="addEventStart( $event)">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="icon-button-demo m-l-10">
+                          <mat-form-field appearance="fill" style="width: 100%;" class="browser-default search-field">
+                            <mat-label>End</mat-label>
+                            <input matInput [matDatepicker]="picker1" (dateChange)="addEventEnd( $event)">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-4">
+                    <ul class="header-buttons">
+                      <li>
+                        <div class="icon-button-demo">
+                          <button mat-mini-fab color="primary" (click)="doSearch()">
+                            <mat-icon class="col-white">search</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="icon-button-demo">
+                          <button mat-mini-fab color="primary" data-toggle="tooltip" data-placement="top"
+                            title="Doanh thu theo ngày hôm nay" (click)="thisday()">
+                            <mat-icon class="col-white">today</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="icon-button-demo">
+                          <button mat-mini-fab color="primary" data-toggle="tooltip" data-placement="top"
+                            (click)="thismonth()" title="Doanh thu theo tháng này">
+                            <mat-icon class="col-white">today</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="icon-button-demo">
+                          <button mat-mini-fab color="primary" data-toggle="tooltip" data-placement="top"
+                            (click)="thisyear()" title="Doanh thu theo năm này">
+                            <mat-icon class="col-white">today</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Tên Bác Sĩ</th>
+                  <th scope="col">Tiền thuốc</th>
+                  <th scope="col">Tiền khám bệnh</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of data">
+                  <td>{{item.tenbacsi}}</td>
+                  <td>{{item.tienthuoc}}</td>
+                  <td>{{item.tienkhambenh}}</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

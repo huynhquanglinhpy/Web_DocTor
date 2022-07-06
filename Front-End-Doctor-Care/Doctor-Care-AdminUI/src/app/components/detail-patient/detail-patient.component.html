@@ -1,0 +1,137 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Thông tin bệnh nhân</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a routerLink="/list-patients" onClick="return false;">Danh sách bệnh nhân</a>
+            </li>
+            <li class="breadcrumb-item active">Thông tin bệnh nhân</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-4 col-md-12">
+        <div class="card">
+          <div class="contact-grid profile-image">
+            <img src="data.imageurl" alt="">
+          </div>
+        </div>
+        <div class="card">
+          <div class="header">
+            <h2>Thông tin bệnh nhân</h2>
+          </div>
+          <div class="tab-pane body active" id="about">
+            <small class="text-muted">Họ tên: </small>
+            <p>{{data.fullname}}</p>
+            <hr>
+            <small class="text-muted">Email: </small>
+            <p>{{data.email}}</p>
+            <hr>
+            <small class="text-muted">CMND: </small>
+            <p>{{data.cmnd}}</p>
+            <hr>
+            <small class="text-muted">SĐT: </small>
+            <p>{{data.sdt}}</p>
+            <hr>
+            <small class="text-muted">Ngày sinh: </small>
+            <p>{{data.ngaysinh}}</p>
+            <hr>
+            <small class="text-muted">Giới tính: </small>
+            <p>{{data.gioitinh}}</p>
+            <hr>
+            <small class="text-muted">Địa chỉ: </small>
+            <p>{{data.diachi}}</p>
+            <hr>
+            <small class="text-muted">Status: </small>
+            <p>{{data.status}}</p>
+            <hr>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-12">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" aria-expanded="true">
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card project_widget">
+                  <div class="header">
+                    <h5>Hồ sơ bệnh án</h5>
+                  </div>
+                  <div class="body">
+                    <div class="table-responsive">
+                      <table class="table table-striped custom-table table-hover">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Tên bác sĩ</th>
+                            <th>Ngày khám</th>
+                            <th>Chuản đoán</th>
+                            <th>Trạng thái thanh toán</th>
+                            <th>Chi tiết</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of data.hoSoBenhAnDTOList">
+                            <td>{{item.id}}</td>
+                            <td>{{item.tenbacsi}}</td>
+                            <td>{{item.ngaykham}}</td>
+                            <td>{{item.chuandoan}}</td>
+                            <td>{{item.dathanhtoan}}</td>
+                            <td><button mat-icon-button color="accent" class="btn-tbl-delete"
+                                (click)="ChiTietHoSoBenhAn(item)">
+                                <mat-icon aria-label="Delete" class="col-white">description</mat-icon>
+                              </button></td>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card project_widget">
+                  <div class="header">
+                    <h5>Lịch đặt khám</h5>
+                  </div>
+                  <div class="body">
+                    <div class="table-responsive">
+                      <table class="table table-striped custom-table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Id</th>
+                            <th>Ngày đặt</th>
+                            <th>Buổi</th>
+                            <th>User hủy hay không</th>
+                            <th>Admin Confirm</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of data.lichDatHenPatientDTOS">
+                            <td>{{item.id}}</td>
+                            <td>{{item.ngaydat}}</td>
+                            <td>{{item.buoi}}</td>
+                            <td>{{item.usercancel}}</td>
+                            <td>{{item.status}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

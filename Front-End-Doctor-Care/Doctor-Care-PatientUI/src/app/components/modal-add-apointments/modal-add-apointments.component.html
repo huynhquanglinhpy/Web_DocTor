@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Hi </h1>
+<div mat-dialog-content>
+  <p>Chọn ngày</p>
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Chọn ngày khám</mat-label>
+    <mat-select (selectionChange)="changeNgay($event.value)">
+      <mat-option [value]="item.day" *ngFor="let item of data.danhSachBacSiFree3DayDTOList">
+        {{item.day}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Chọn Buổi</p>
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Chọn buổi khám</mat-label>
+    <mat-select (selectionChange)="changeBuoi($event.value)">
+      <mat-option [value]="item.buoiInBoolean" *ngFor="let item of sessionToString">
+        {{item.buoi}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAddApointment()">Ok</button>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+</div>

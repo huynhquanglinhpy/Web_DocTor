@@ -1,0 +1,139 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Chỉnh sửa bác sĩ</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/admin/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Bác sĩ</a>
+            </li>
+            <li class="breadcrumb-item active">Chỉnh sửa bác sĩ</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>Chỉnh sửa bác sĩ</h2>
+
+          </div>
+          <div class="body">
+            <form class="example-form">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập họ tên bác sĩ</mat-label>
+                    <input matInput placeholder="Họ tên bác sĩ" (keyup)="onKeyNameBacSi($event)"
+                      value={{doctor.fullname}}>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập số điện thoại bác sĩ</mat-label>
+                    <input matInput placeholder="Số Điện Thoại" type="number" required value={{doctor.sdt}}
+                      (keyup)="onKeySDTBacSi($event)">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập Email</mat-label>
+                    <input matInput placeholder="Nhập email" type="text" value={{doctor.email}} disabled
+                      (keyup)="onKeyEmailBacSi($event)">
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập mật khẩu</mat-label>
+                    <input matInput placeholder="Nhập lại password" type="password" required disabled>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Chọn năm sinh</mat-label>
+                    <input matInput [matDatepicker]="picker" (dateChange)="addEvent( $event)"
+                      [formControl]="dateOfBirth">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Giới tính</mat-label>
+                    <mat-select (selectionChange)="changeGender($event.value)" [(value)]="gender">
+                      <mat-option [value]="1">
+                        Nam
+                      </mat-option>
+                      <mat-option [value]="0">
+                        Nữ
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Chọn Khoa</mat-label>
+                    <mat-select (selectionChange)="changeKhoa($event.value)" [(value)]="doctor.makhoa">
+                      <mat-option [value]="item.id" *ngFor="let item of khoas">
+                        {{item.tenkhoa}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập bằng cấp</mat-label>
+                    <input matInput placeholder="Nhập bằng cấp" type="text" value={{doctor.bangcap}}
+                      (keyup)="onKeyBangcapBacSi($event)">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập CMND</mat-label>
+                    <input matInput placeholder="Nhập CMND" type="text" required value={{doctor.cmnd}}
+                      (keyup)="onKeyCMNDBacSi($event)">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                  <input (change)="upload($event)" type="file" accept="image/png, image/gif, image/jpeg" name="files"
+                    placeholder="Hình ảnh thumbnail" class="form-control" />
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <h1>Hình ảnh</h1>
+                  <img src={{doctor.image_url}} style="width: 300px;height: 300px;display: block;" />
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <h1>Chức năng</h1>
+                  <button type="button" class="btn btn-primary" style="margin-right: 20px;"
+                    (click)="doUpdateDoctor()">Chỉnh sửa</button>
+                  <button type="button" class="btn btn-secondary" style="margin-right: 20px;"
+                    (click)="doReset()">Làm mới</button>
+                  <button type="button" class="btn btn-light" style="margin-right: 20px;"
+                    (click)="doExit()">Thoát</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

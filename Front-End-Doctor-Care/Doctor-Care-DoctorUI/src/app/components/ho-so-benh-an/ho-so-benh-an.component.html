@@ -1,0 +1,54 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Hồ Sơ Bệnh Án</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/patient/dashboard">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item active">Hồ Sơ Bệnh Án</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Ngày Khám</th>
+                  <th scope="col">Ngày Tái Khám</th>
+                  <th scope="col">Chuẩn Đoán</th>
+                  <th scope="col">Giá Tiền Khám Bệnh</th>
+                  <th scope="col">Chức Năng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of data">
+                  <th scope="row">{{item.id}}</th>
+                  <td>{{item.ngaykham}}</td>
+                  <td>{{item.ngaytaikham}}</td>
+                  <td>{{item.chuandoan}}</td>
+                  <td>{{item.giatienkhambenh}}</td>
+                  <td>
+                    <button mat-icon-button class="btn-tbl-confirm" (click)=chitiet(item)>
+                      <mat-icon>done</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

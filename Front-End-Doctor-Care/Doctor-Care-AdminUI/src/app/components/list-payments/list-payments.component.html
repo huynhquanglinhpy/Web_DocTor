@@ -1,0 +1,98 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Danh sách hoá đơn</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/admin/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Doanh thu</a>
+            </li>
+            <li class="breadcrumb-item active">Hoá đơn</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <div class="table-responsive">
+              <div class="materialTableHeader">
+                <div class="row">
+                  <div class="col-8">
+                    <ul class="header-buttons-left ms-0">
+                      <li class="dropdown">
+                        <h2>
+                          <strong>Biên lai khám bệnh</strong></h2>
+                      </li>
+                      <li class="dropdown m-l-20">
+                        <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                        <input placeholder="Nhập mã khám bệnh" type="number" #filter (keyup)="onKeyId($event)"
+                          class="browser-default search-field" aria-label="Search box">
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-4">
+                    <ul class="header-buttons">
+                      <li>
+                        <div class="icon-button-demo">
+                          <button mat-mini-fab color="primary">
+                            <mat-icon class="col-white">search</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="icon-button-demo">
+                          <button mat-mini-fab color="primary" (click)="doRefresh()">
+                            <mat-icon class="col-white">refresh</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên bác sĩ</th>
+                    <th scope="col">Tên bệnh nhân</th>
+                    <th scope="col">Ngày</th>
+                    <th scope="col">Tiền khám bệnh</th>
+                    <th scope="col">Tiền thuốc</th>
+                    <th scope="col">Tổng biên lai</th>
+                    <th scope="col">Chức năng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of data">
+                    <th>{{item.id}}</th>
+                    <td>{{item.tenbacsi}}</td>
+                    <td>{{item.tenbenhnhan}}</td>
+                    <td>{{item.ngay}}</td>
+                    <td>{{item.tienkhambenh}}</td>
+                    <td>{{item.tienthuoc}}</td>
+                    <td>{{item.tongbienlai}}</td>
+                    <td><button mat-icon-button color="accent" class="btn-tbl-delete" (click)="tratien(item.id)">
+                        <mat-icon aria-label="Delete" class="col-white">add</mat-icon>
+                      </button></td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

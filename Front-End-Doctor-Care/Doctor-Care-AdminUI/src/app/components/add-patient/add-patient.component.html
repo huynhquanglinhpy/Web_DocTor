@@ -1,0 +1,125 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Add Patient</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/admin/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Patient</a>
+            </li>
+            <li class="breadcrumb-item active">Add</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>Add Patient</h2>
+
+          </div>
+          <div class="body">
+            <form class="example-form" style="width: 100%;">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập họ tên bệnh nhân</mat-label>
+                    <input matInput placeholder="Họ tên bện nhân" (keyup)="onKeyNameBenhNhan($event)">
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập số điện thoại bệnh nhân</mat-label>
+                    <input matInput placeholder="Số Điện Thoại" type="number" required
+                      (keyup)="onKeySDTBenhNhan($event)">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập Email</mat-label>
+                    <input matInput placeholder="Nhập Email" type="text" (keyup)="onKeyEmailBenhNhan($event)">
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập Password</mat-label>
+                    <input matInput placeholder="Nhập password" type="password" required
+                      (keyup)="onKeyPasswordBenhNhan($event)">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Chọn năm sinh</mat-label>
+                    <input matInput [matDatepicker]="picker" (dateChange)="addEvent( $event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Gender</mat-label>
+                    <mat-select (selectionChange)="changeGender($event.value)">
+                      <mat-option [value]="1">
+                        Male
+                      </mat-option>
+                      <mat-option [value]="0">
+                        Female
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập CMND or Thẻ căn cước</mat-label>
+                    <input matInput placeholder="Nhập CMND or Thẻ căn cước" type="text" required
+                      (keyup)="onKeyCMNDBenhNhan($event)">
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập địa chỉ</mat-label>
+                    <input matInput placeholder="Nhập địa chỉ" type="text" required
+                      (keyup)="onKeyDiaChiBenhNhan($event)">
+                  </mat-form-field>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                  <input (change)="upload($event)" type="file" accept="image/png, image/gif, image/jpeg" name="files"
+                    placeholder="Hình ảnh thumbnail" class="form-control" />
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <h1>Hình ảnh</h1>
+                  <img src={{linkImageUrl}} style="width: 300px;height: 300px;display: block;" />
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <h1>Chức năng</h1>
+                  <button type="button" class="btn btn-primary" style="margin-right: 20px;"
+                    (click)="addPatient()">Submit</button>
+                  <button type="button" class="btn btn-secondary" style="margin-right: 20px;"
+                    (click)="reset()">Reset</button>
+                  <button type="button" class="btn btn-light" style="margin-right: 20px;"
+                    (click)="exit()">Thoát</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

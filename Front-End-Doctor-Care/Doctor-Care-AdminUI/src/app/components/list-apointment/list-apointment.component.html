@@ -1,0 +1,57 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Các cuộc hẹn hôm nay</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item active">Các cuộc hen hôm nay</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="header">
+            <h2>Cuộc hẹn hôm nay</h2>
+
+          </div>
+          <div class="body">
+            <ul class="list-unstyled user-progress list-unstyled-border list-unstyled-noborder">
+              <li class="app-list" *ngFor="let item of data">
+                <div class="set-flex">
+                  <div><img alt="image" class="msr-3 rounded-circle" width="40" src={{item.image_url}}></div>
+                </div>
+                <div class="set-flex">
+                  <div class="media-title font-16">Tên Bác Sĩ: {{item.bacsiname}}</div>
+                  <div class="text-job text-muted mb-0">{{item.tenkhoa}}</div>
+                  <div *ngIf=" item.user_send_cancel" class="alert alert-danger" role="alert">User Đã
+                    Hủy
+                  </div>
+                </div>
+                <div class="set-flex">
+                  <div class="media-title font-16">Ngày: {{item.ngay}}</div>
+                  <div class="text-job text-muted mb-0">Thời gian:{{item.thoigian}}</div>
+                </div>
+                <div class="set-flex">
+                  <div class="media-title text-muted mb-0">SDT Bác Sĩ</div>
+                  <div class="text-job font-16">{{item.sdt}}</div>
+                </div>
+                <div class="media-cta">
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

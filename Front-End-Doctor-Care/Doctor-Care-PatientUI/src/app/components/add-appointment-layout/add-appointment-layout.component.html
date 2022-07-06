@@ -1,0 +1,83 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Đặt lịch</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/admin/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item active">Đặt lịch</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>Đặt lịch</h2>
+          </div>
+          <div class="body">
+            <form class="example-form">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Chọn Khoa</mat-label>
+                    <mat-select (selectionChange)="changeKhoa($event.value)">
+                      <mat-option [value]="item.id" *ngFor="let item of khoas">
+                        {{item.tenkhoa}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Chọn Bác Sĩ</mat-label>
+                    <mat-select (selectionChange)="changeDoctor($event.value)">
+                      <mat-option [value]="item.id" *ngFor="let item of doctors">
+                        {{item.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Chọn Ngày</mat-label>
+                    <mat-select (selectionChange)="changeNgay($event.value)">
+                      <mat-option [value]="item.date" *ngFor="let item of lichlamviec">
+                        {{item.date}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Chọn Buổi</mat-label>
+                    <mat-select (selectionChange)="changeBuoi($event.value)">
+                      <mat-option [value]="item.buoiInBoolean" *ngFor="let item of sessionToString">
+                        {{item.buoi}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                <button type="button" class="btn btn-primary" style="margin-right: 20px;"
+                  (click)="doAddApointment()">Đặt lịch</button>
+                <button type="button" class="btn btn-light" style="margin-right: 20px;"
+                  (click)="doExit()">Thoát</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

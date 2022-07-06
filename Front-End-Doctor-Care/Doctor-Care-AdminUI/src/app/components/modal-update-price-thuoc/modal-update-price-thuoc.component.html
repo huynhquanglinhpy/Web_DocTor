@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Nhập giá tiền</h1>
+<h3 *ngIf="error" style="color: red;">Có lỗi xảy ra</h3>
+<div mat-dialog-content>
+  <p>Nhập giá tiền</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập giá tiền</mat-label>
+    <input matInput placeholder="Nhập Lý Do" type="text" required (keyup)="onKeyGiaTien($event)">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="do()">Add</button>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

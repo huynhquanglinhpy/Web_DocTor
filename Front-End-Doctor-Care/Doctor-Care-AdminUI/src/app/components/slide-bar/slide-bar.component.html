@@ -1,0 +1,117 @@
+<div>
+  <!-- Left Sidebar -->
+  <aside id="leftsidebar" class="sidebar" (mouseenter)="mouseHover($event)" (mouseleave)="mouseOut($event)">
+    <!-- Menu -->
+    <div class="menu">
+      <ul class="list">
+        <li class="sidebar-user-panel">
+          <div class="user-panel">
+            <div class=" image">
+
+            </div>
+          </div>
+          <div class="profile-usertitle">
+            <div class="sidebar-userpic-name">{{nameAdmin}}</div>
+            <div class="profile-usertitle-job ">Admin</div>
+          </div>
+        </li>
+        <!-- Top Most level menu -->
+        <li>
+          <a class="menu-top" (click)="gotohome()">
+            <i class="material-icons-two-tone">home</i>
+            <span class="hide-menu">Trang chủ
+            </span>
+
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/list-apointments']" class="" class="menu-top" (click)="openAppointment()">
+            <i class="material-icons-two-tone">assignment</i>
+            <span class="hide-menu">Cuộc hẹn
+            </span>
+          </a>
+          <ul class="ml-menu-2" style="display: block;" *ngIf="appointmentshow">
+            <li>
+              <a [routerLink]="['/list-apointments']" routerLinkActive="router-link-active">
+                Các cuộc hẹn
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/block-apointments']" routerLinkActive="router-link-active">
+                Các cuộc hẹn bị huỷ
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li>
+          <a routerLink="/list-doctors" class="" class="menu-top" (click)="openshowdoctor()">
+            <i class="material-icons-two-tone">supervised_user_circle</i>
+            <span >Bác sĩ
+            </span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/list-patients" class="" class="menu-top" (click)="openshowpatient()">
+            <i class="material-icons-two-tone">face</i>
+            <span >Bệnh nhân
+            </span>
+          </a>
+
+        </li>
+        <li>
+          <a  routerLink="/doanhthu" class="" class="menu-top " (click)="openshowPayment()">
+            <i class="material-icons-two-tone">monetization_on</i>
+            <span class="hide-menu">Doanh thu
+            </span>
+          </a>
+          <ul class="ml-menu-2" style="display: block;" *ngIf="paymentshow">
+            <li>
+              <a routerLink="/doanhthu" routerLinkActive="active">
+                Doanh thu
+              </a>
+            </li>
+            <li>
+              <a routerLink="/list-payments" routerLinkActive="active">
+                Hóa đơn
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li>
+          <a  routerLink="/list-khoa" class="" class="menu-top" (click)="showKhoa()">
+            <i class="material-icons-two-tone">date_range</i>
+            <span class="hide-menu">Khoa
+            </span>
+          </a>
+          <ul class="ml-menu-2" style="display: block;" *ngIf="showkhoabool">
+            <li (click)="themKhoa()">
+              <a routerLinkActive="active">
+                Thêm Khoa
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li>
+          <a routerLink="/list-medicines"  class="" class="menu-top" (click)="openshowMedicine()">
+            <i class="material-icons-two-tone">description</i>
+            <span class="hide-menu">Thuốc
+            </span>
+          </a>
+
+        </li>
+        <li>
+          <a class="menu-top" (click)="signOutAdmin()">
+            <i class="material-icons-two-tone">power_settings_new</i>
+            <span class="hide-menu">Đăng xuất
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- #Menu -->
+  </aside>
+  <!-- #END# Left Sidebar -->
+</div>

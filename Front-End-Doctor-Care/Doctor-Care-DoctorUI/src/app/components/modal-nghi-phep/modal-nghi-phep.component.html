@@ -1,0 +1,20 @@
+<div mat-dialog-content>
+  <p>Nhập ngày muốn nghỉ</p>
+  <mat-form-field appearance="fill" style="width: 100%;" class="browser-default search-field">
+    <mat-label>Ngày</mat-label>
+    <input matInput [matDatepicker]="picker" (dateChange)="addEventStart( $event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Nhập lý do</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập lý do</mat-label>
+    <input matInput placeholder="Nhập lý do" type="text" required (keyup)="onKeyDescription($event)">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doNghiPhep()">Nghỉ phép</button>
+  <button mat-button (click)="onNoClick()">huỷ</button>
+</div>

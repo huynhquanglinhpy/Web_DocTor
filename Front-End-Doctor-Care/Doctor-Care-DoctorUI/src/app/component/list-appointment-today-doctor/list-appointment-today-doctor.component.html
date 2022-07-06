@@ -1,0 +1,37 @@
+<section class="content">
+  <div class="container-fluid">
+
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="header">
+            <h2>Lịch hẹn hôm nay</h2>
+
+          </div>
+          <div class="body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Thời gian</th>
+                  <th scope="col">Tên bệnh nhân</th>
+                  <th scope="col">Khám bệnh</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of today_appointments">
+                  <th scope="row">{{item.id}}</th>
+                  <td>{{item.thoigian}}</td>
+                  <td>{{item.patientname}}</td>
+                  <td><button type="button" class="btn btn-primary" (click)="khambenh(item)">
+                      <mat-icon>details</mat-icon>
+                    </button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

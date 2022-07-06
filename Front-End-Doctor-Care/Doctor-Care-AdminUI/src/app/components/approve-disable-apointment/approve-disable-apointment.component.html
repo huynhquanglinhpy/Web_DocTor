@@ -1,0 +1,80 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Cuộc hẹn bị huỷ</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/admin/dashboard/main">
+                <i class="fas fa-home"></i> Home </a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Cuộc hẹn bị huỷ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <div class="table-responsive">
+              <div class="materialTableHeader">
+                <div class="row">
+                  <div class="col-8">
+                    <ul class="header-buttons-left ms-0">
+                      <li class="dropdown">
+                        <h2>
+                          <strong>Email bệnh nhân</strong></h2>
+                      </li>
+                      <li class="dropdown m-l-20">
+                        <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                        <input placeholder="Nhập email" type="text" #filter class="browser-default search-field"
+                          (keyup)="onKeyName($event)" aria-label="Search box">
+                      </li>
+                      <li>
+                        <div class="icon-button-demo m-l-10">
+                          <button mat-mini-fab color="warn">
+                            <mat-icon class="col-white">delete</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <br>
+
+              <table class="table" style="width: 100%;">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Email Bệnh Nhân</th>
+                    <th scope="col">Ngày</th>
+                    <th scope="col">Giờ</th>
+                    <th scope="col">Chức Năng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of data">
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.emailbn}}</td>
+                    <td>{{item.ngay}}</td>
+                    <td>{{item.thoigian}}</td>
+                    <td><button mat-icon-button class="btn-tbl-reject" (click)="adminAporveHuy(item)">
+                        <mat-icon>close</mat-icon>
+                      </button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

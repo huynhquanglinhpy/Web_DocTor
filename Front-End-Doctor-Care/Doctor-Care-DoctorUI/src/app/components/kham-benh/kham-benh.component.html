@@ -1,0 +1,149 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Khám bệnh</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/">
+                <i class="fas fa-home"></i>Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Lịch hẹn</a>
+            </li>
+            <li class="breadcrumb-item active">Khám bệnh</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>Khám bệnh</h2>
+          </div>
+          <div class="body">
+            <form class="example-form">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập số ngày tái khám</mat-label>
+                    <input matInput placeholder="Nhập số ngày tái khám" type="number"
+                      (keyup)="onKeySoNgayTaiKham($event)" />
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập tiền khám bệnh</mat-label>
+                    <input matInput placeholder="Nhập tiền khám bệnh" type="number" (keyup)="onKeyTien($event)" />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Chuẩn đoán của bác sĩ</mat-label>
+                    <textarea matInput placeholder="Chuẩn đoán của bác sĩ" (keyup)="onKeyChuanDoan($event)"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="card">
+                    <div class="body">
+                      <h1 style="text-align: center;">Tìm kiếm Thuốc</h1>
+                      <div class="table-responsive">
+                        <div class="materialTableHeader">
+                          <div class="row">
+                            <div class="col-8">
+                              <ul class="header-buttons-left ms-0">
+                                <li class="dropdown">
+                                  <h2>
+                                    <strong>Thuốc</strong></h2>
+                                </li>
+                                <li class="dropdown m-l-20">
+                                  <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                                  <input placeholder="Nhập tên thuốc" type="text" #filter
+                                    class="browser-default search-field" aria-label="Search box"
+                                    (keyup)="onKeyTenThuoc($event)">
+                                </li>
+                                <li>
+
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">ID</th>
+                              <th scope="col">Tên thuốc</th>
+                              <th scope="col">Giá bán</th>
+                              <th scope="col">Thêm</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of datas">
+                              <th scope="row">{{item.id}}</th>
+                              <td>{{item.name}}</td>
+                              <td>{{item.quantity}}</td>
+                              <td><button type="button" class="btn btn-primary " (click)="addThuoc(item)">Thêm</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                <h1 style="text-align: center;">Chi tiết hóa đơn thuốc</h1>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Tên thuốc</th>
+                      <th scope="col">Số lượng</th>
+                      <th scope="col">Giá bán</th>
+                      <th scope="col">Xóa</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of dataThuoChoKhamBenh">
+                      <td>{{item.name}}</td>
+                      <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Nhập số lượng</mat-label>
+                          <input matInput placeholder="Nhập số ngày tái khám" type="number" value="1"
+                            (keyup)="onKeySoLuong($event,item)" />
+                        </mat-form-field>
+                      </td>
+                      <td>{{item.price}}</td>
+                      <td><button type="button" class="btn btn-danger " (click)="xoaThuoc(item)">Xóa</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                <h1>Chức năng</h1>
+                <button type="button" class="btn btn-primary" style="margin-right: 20px;"
+                  (click)="doAdd()">Xuất hoá đơn</button>
+                <button type="button" class="btn btn-light" style="margin-right: 20px;"
+                  (click)="doExit()">Thoát</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

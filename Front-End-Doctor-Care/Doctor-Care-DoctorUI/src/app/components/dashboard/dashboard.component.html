@@ -1,0 +1,92 @@
+<section class="content">
+  <div class="container-fluid">
+    <!-- Widgets -->
+    <div class="row">
+      <div class="col-lg-4 col-sm-6">
+        <div class="info-box7 l-bg-card1 order-info-box7">
+          <div class="info-box7-block">
+            <h5 class="m-b-15">Bệnh nhân hôm nay</h5>
+            <h2 class="text-end"><i class="fas fa-user-injured float-start"></i><span>{{top.todaypatient}}</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <div class="info-box7 l-bg-card2 order-info-box7">
+          <div class="info-box7-block">
+            <h5 class="m-b-15">Lịch hẹn hôm nay</h5>
+            <h2 class="text-end"><i class="far fa-calendar-check float-start"></i><span>{{top.todayappointment}}</span>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <div class="info-box7 l-bg-card3 order-info-box7">
+          <div class="info-box7-block">
+            <h5 class="m-b-15">Khám bệnh</h5>
+            <h2 class="text-end"><i class="fas fa-cut float-start"></i><span>{{top.todaykhambenh}}</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #END# Widgets -->
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Bệnh nhân trong tháng</h2>
+
+          </div>
+          <div class="tableBody">
+            <div class="table-responsive">
+              <table class="table table-hover ">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Tên</th>
+                    <th>SDT</th>
+                    <th>Email</th>
+                    <th>Số lần</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of mid">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.sdt}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.solan}}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+          <div class="header">
+            <h2>Thuốc trong tháng</h2>
+          </div>
+          <div class="list-body">
+            <ul class="list-unstyled list-unstyled-noborder">
+              <li class="patient-group-list" *ngFor="let item of right">
+                <div class="d-flex">
+                  <div class="lbl-bedge l-bg-orange">
+                    <span class="lbl-bedge-title"></span>
+                  </div>
+                  <div class="group-details font-16">{{item.tenthuoc}}</div>
+                </div>
+                <div class="ms-auto">
+                  <div class="media-title text-muted mb-0 font-14">{{item.quantity}}</div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

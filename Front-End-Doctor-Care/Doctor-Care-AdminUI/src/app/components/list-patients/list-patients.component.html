@@ -1,0 +1,127 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Danh sách bệnh nhân</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/admin/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Bệnh nhân</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <div class="table-responsive">
+              <div class="materialTableHeader">
+                <div class="row">
+                  <div class="col-8">
+                    <ul class="header-buttons-left ms-0">
+                      <li class="dropdown">
+                        <h2>
+                          <strong>Bệnh nhân</strong></h2>
+                      </li>
+                      <li class="dropdown m-l-20">
+                        <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                        <input placeholder="Tìm kiếm" type="text" #filter class="browser-default search-field"
+                          (keyup)="onKeyNameEmailBenhNhan($event)" aria-label="Search box">
+                      </li>
+                      <li>
+                        <div class="icon-button-demo m-l-10">
+                          <button mat-mini-fab color="warn">
+                            <mat-icon class="col-white">delete</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-4">
+                    <ul class="header-buttons">
+                      <li>
+                        <div class="icon-button-demo">
+                          <button mat-mini-fab color="primary" (click)="addPatient()">
+                            <mat-icon class="col-white">add</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="icon-button-demo">
+                          <button mat-mini-fab color="primary" (click)="patientRefresh()">
+                            <mat-icon class="col-white">refresh</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Giới tính</th>
+                    <th scope="col">SĐT</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Chức năng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of patients">
+                    <td routerLink="/patient/{{item.id}}" routerLinkActive="active"
+                      routerLinkActive="router-link-active">
+                      {{item.fullName}}</td>
+                    <td routerLink="/patient/{{item.id}}" routerLinkActive="active"
+                      routerLinkActive="router-link-active">
+                      {{item.email}}</td>
+                    <td routerLink="/patient/{{item.id}}" routerLinkActive="active" *ngIf="item.gender"
+                      routerLinkActive="router-link-active">
+                      Nam</td>
+                    <td routerLink="/patient/{{item.id}}" routerLinkActive="active" *ngIf="!item.gender"
+                      routerLinkActive="router-link-active">
+                      Nữ</td>
+                    <td routerLink="/patient/{{item.id}}" routerLinkActive="active"
+                      routerLinkActive="router-link-active">
+                      {{item.sdt}}</td>
+                    <td routerLink="/patient/{{item.id}}" routerLinkActive="active"
+                      routerLinkActive="router-link-active">
+                      {{item.enable_status}}</td>
+                    <td>
+                      <button mat-icon-button color="accent" class="btn-tbl-delete"
+                        (click)="seeHoSoBenhAnPatient(item.id)">
+                        <mat-icon aria-label="Delete" class="col-white">description</mat-icon>
+                      </button>
+                      <button mat-icon-button color="accent" class="btn-tbl-edit" (click)="editPatient(item.id)">
+                        <mat-icon aria-label="Edit" class="col-white">edit</mat-icon>
+                      </button>
+
+                      <button mat-icon-button color="accent" class="btn-tbl-delete" (click)="disablePatient(item.id)"
+                        *ngIf="!item.enable_status">
+                        <mat-icon aria-label="Delete" class="col-white">done</mat-icon>
+                      </button>
+                      <button mat-icon-button color="accent" class="btn-tbl-delete" (click)="disablePatient(item.id)"
+                        *ngIf="item.enable_status">
+                        <mat-icon aria-label="Delete" class="col-white">delete</mat-icon>
+                      </button></td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

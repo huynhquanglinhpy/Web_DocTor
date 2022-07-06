@@ -1,0 +1,70 @@
+<div class="auth-container">
+  <div class="row auth-main">
+    <div class="col-sm-6 px-0 d-none d-sm-block">
+      <div class="left-img" style="background-image: url(assets/BV_.jpg);">
+      </div>
+    </div>
+    <div class="col-sm-6 auth-form-section">
+      <div class="form-section">
+        <div class="auth-wrapper">
+          <h2 class="welcome-msg"> Đăng ký </h2>
+          <p class="auth-signup-text text-muted">Nhập thông tin</p>
+          <form class="validate-form" [formGroup]="authForm">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Tên</mat-label>
+                  <input matInput formControlName="username" required (keyup)="onKeyInput($event)">
+                  <mat-icon matSuffix>face</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="email" required (keyup)="onKeyEmail($event)">
+                  <mat-icon matSuffix>mail</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Mật khẩu</mat-label>
+                  <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required
+                    (keyup)="onKeyPass($event)">
+                  <mat-icon matSuffix (click)="hide = !hide">
+                    {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Nhập lại mật khẩu</mat-label>
+                  <input matInput formControlName="cpassword" [type]="chide ? 'password' : 'text'" required>
+                  <mat-icon matSuffix (click)="chide = !chide">
+                    {{chide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="flex-sb-m w-full  p-b-20">
+              <div>
+                <span><a routerLink="/login">
+                    Đã có tài khoản?
+                  </a></span>
+              </div>
+            </div>
+            <div class="container-auth-form-btn">
+              <button mat-flat-button color="primary" type="submit" (click)="register()">
+                Đăng ký
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

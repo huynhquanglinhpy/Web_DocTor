@@ -1,0 +1,78 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <!-- BEGIN INVOICE -->
+        <div class="col-xs-12">
+          <div class="grid invoice">
+            <div class="grid-body">
+              <div class="invoice-title">
+
+                <br>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h2>Hồ sơ bệnh án<br>
+                      <span class="small">#{{id}}</span></h2>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-xs-6">
+                  <address>
+                    <strong>Tên bác sĩ: </strong> {{data.tenbacsi}}<br>
+                  </address>
+                </div>
+                <div class="col-xs-6 text-right">
+                  <address>
+                    <strong>Ngày khám: </strong>{{data.ngaykham}}<br>
+                  </address>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <address>
+                    <strong>Trạng thái thanh toán: </strong>{{data.da_thanh_toan}}<br>
+                  </address>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <h3>Chi tiết thuốc</h3>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr class="line">
+                        <td class="text-center"><strong>Tên thuốc</strong></td>
+                        <td class="text-center"><strong>Số lượng</strong></td>
+                        <td class="text-center"><strong>Price</strong></td>
+                        <td class="text-center"><strong>Total Price</strong></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of data.thuocdetail">
+                        <td class="text-center">{{item.tenthuoc}}</td>
+                        <td class="text-center">{{item.soluong}}</td>
+                        <td class="text-center">{{item.price_per_quantity}}</td>
+                        <td class="text-center">{{item.giatien}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-right identity">
+                  <p><strong>Tiên khám bệnh: </strong>{{data.tienkhambenh}}</p>
+                </div>
+                <div class="col-md-12 text-right identity">
+                  <p><strong>Tổng biên lai: </strong>{{data.tongbienlai}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END INVOICE -->
+      </div>
+    </div>
+  </div>
+</section>
